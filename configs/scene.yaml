@@ -1,0 +1,223 @@
+data_paths:
+  camA: data/tracking_result_A.json
+  camB: data/tracking_result_B.json
+  camC: data/tracking_result_C.json
+  camD: data/tracking_result_D.json
+  camE: data/tracking_result_E.json
+
+matching:
+  fusion_w_pos: 0.5   # 位置スコア重み（0〜1）
+  fusion_w_app: 0.5   # 外観スコア重み（0〜1）
+
+common: &common
+  fps: 30.0
+  min_track_len: 31
+  sigma_frames: 45.0
+  hs_hbins: 16
+  hs_sbins: 16
+  hs_conf_min: 0.7
+
+
+cameras:
+  camA:
+    <<: *common
+    calib:
+      src_points:
+        - [47, 40]
+        - [0, 137]
+        - [0, 264]
+        - [0, 466]
+        - [0, 733]
+        - [512, 709]
+        - [426, 240]
+        - [398, 0]
+        - [674, 0]
+      polar_points:
+        - { r: 0.700, theta: 188 }
+        - { r: 1.602, theta: 210 }
+        - { r: 2.579, theta: 209 }
+        - { r: 3.515, theta: 211 }
+        - { r: 4.249, theta: 211 }
+        - { r: 4.654, theta: 198 }
+        - { r: 3.352, theta: 172 }
+        - { r: 2.423, theta: 141 }
+        - { r: 3.946, theta: 140 }
+      x_axis_defined_deg: 137
+
+    neighbors: [camB]
+    distance_to: { camB: 12.0 }
+    candidate_time_window:
+      camB: [30, 450]
+
+    entry_rules:
+      camB: { xmin: 900, xmax: 1600, ymin: 300, ymax: 1080, ang_min: 125, ang_max: 234 }
+
+    exit_rules:
+      camB: { xmin: 900, xmax: 1600, ymin: 300, ymax: 1080, ang_min: 303, ang_max:  54 }
+
+
+  camB:
+    <<: *common
+    calib:
+      src_points:
+        - [324, 13]
+        - [807, 0]
+        - [920, 63]
+        - [1348, 482]
+        - [1482, 702]
+        - [1103, 728]
+        - [546, 725]
+        - [0, 816]
+        - [0, 385]
+      polar_points:
+        - { r: 3.629, theta: 282 }
+        - { r: 9.130, theta: 281 }
+        - { r: 10.511, theta: 292 }
+        - { r: 14.574, theta: 309 }
+        - { r: 15.470, theta: 317 }
+        - { r: 13.870, theta: 320 }
+        - { r: 11.661, theta: 329 }
+        - { r: 10.500, theta: 341 }
+        - { r: 7.094, theta: 342 }
+      x_axis_defined_deg: 280
+
+    roi_boxes:
+      drop_zone_1: [1256, 1920, 0, 1080]
+      drop_zone_2: [800, 1050, 0, 115]
+      drop_zone_3: [0, 630, 0, 125]
+
+    neighbors: [camA, camC, camD, camE]
+    distance_to: { camA: 6.3, camC: 4.0, camD: 19.0, camE: 3.0 }
+    candidate_time_window:
+      camA: [30, 450]
+      camC: [60, 650]
+      camD: [120, 720]
+      camE: [30, 300]
+
+    entry_rules:
+      camA: { xmin: 1070, xmax: 1920, ymin: 301, ymax:  900, ang_min: 124, ang_max: 235 }
+      camC: { xmin:  701, xmax: 1069, ymin:   0, ymax:  300, ang_min:  25, ang_max: 154 }
+      camD: { xmin:    0, xmax:  700, ymin:   0, ymax:  300, ang_min: 340, ang_max: 159 }
+      camE: { xmin:    0, xmax:  500, ymin: 230, ymax: 1080, ang_min: 293, ang_max:  66 }
+
+    exit_rules:
+      camA: { xmin: 1070, xmax: 1920, ymin: 301, ymax:  900, ang_min: 304, ang_max:  55 }
+      camC: { xmin:  701, xmax: 1069, ymin:   0, ymax:  300, ang_min: 205, ang_max: 360 }
+      camD: { xmin:    0, xmax:  700, ymin:   0, ymax:  300, ang_min: 200, ang_max: 339 }
+      camE: { xmin:    0, xmax:  500, ymin: 230, ymax: 1080, ang_min: 113, ang_max: 236 }
+
+
+  camC:
+    <<: *common
+    calib:
+      src_points:
+        - [422, 37]
+        - [206, 20]
+        - [0, 636]
+        - [272, 466]
+        - [340, 722]
+        - [397, 576]
+        - [454, 185]
+      polar_points:
+        - { r: 2.581, theta: 177 }
+        - { r: 1.375, theta: 177 }
+        - { r: 4.411, theta: 249 }
+        - { r: 4.053, theta: 237 }
+        - { r: 4.718, theta: 240 }
+        - { r: 4.505, theta: 236 }
+        - { r: 2.943, theta: 212 }
+      x_axis_defined_deg: 163
+
+    neighbors: [camB]
+    distance_to: { camB: 15.0 }
+    candidate_time_window:
+      camB: [60, 650]
+
+    entry_rules:
+      camB: { xmin: 700, xmax: 1000, ymin: 300, ymax: 600, ang_min: 300, ang_max:  150 }
+
+    exit_rules:
+      camB: { xmin: 700, xmax: 1000, ymin: 300, ymax: 470, ang_min: 130, ang_max: 220 }
+
+
+  camD:
+    <<: *common
+    calib:
+      src_points:
+        - [728, 0]
+        - [1216, 56]
+        - [1089, 124]
+        - [399, 217]
+        - [270, 629]
+        - [570, 609]
+        - [572, 977]
+        - [1651, 829]
+        - [1587, 530]
+      polar_points:
+        - { r: 8.158, theta: 176 }
+        - { r: 13.157, theta: 190 }
+        - { r: 11.846, theta: 198 }
+        - { r: 8.683, theta: 222 }
+        - { r: 11.912, theta: 232 }
+        - { r: 12.371, theta: 228 }
+        - { r: 13.445, theta: 231 }
+        - { r: 15.048, theta: 222 }
+        - { r: 14.607, theta: 217 }
+      x_axis_defined_deg: 176
+
+    neighbors: [camB, camE]
+    distance_to: {camB: 12.0, camE: 11.0 }
+    candidate_time_window:
+      camB: [90, 720]
+      camE: [90, 720]
+
+    entry_rules:
+      camB: { xmin: 0, xmax: 360, ymin: 301, ymax: 650, ang_min: 300, ang_max: 68 }
+      camE: { xmin: 0, xmax: 360, ymin:   0, ymax: 650, ang_min: 300, ang_max: 68 }
+
+    exit_rules:
+      camB: { xmin: 0, xmax: 360, ymin: 301, ymax: 650, ang_min: 131, ang_max: 228 }
+      camE: { xmin: 0, xmax: 360, ymin:   0, ymax: 650, ang_min: 150, ang_max: 300 }
+
+
+  camE:
+    <<: *common
+    calib:
+      src_points:
+        - [87, 92]
+        - [87, 216]
+        - [446, 180]
+        - [441, 0]
+        - [646, 236]
+        - [818, 456]
+        - [888, 60]
+        - [983, 126]
+        - [1400, 0]
+      polar_points:
+        - { r: 0.992, theta: 289 }
+        - { r: 1.672, theta: 298 }
+        - { r: 2.349, theta: 271 }
+        - { r: 1.867, theta: 243 }
+        - { r: 2.978, theta: 262 }
+        - { r: 3.607, theta: 280 }
+        - { r: 3.642, theta: 244 }
+        - { r: 3.908, theta: 250 }
+        - { r: 5.534, theta: 243 }
+      x_axis_defined_deg: 243
+
+    roi_boxes:
+      drop_zone_1: [[500, 0], [1920, 0], [1920, 555]]
+
+    neighbors: [camB, camD]
+    distance_to: {camB: 5.5, camD: 11.0 }
+    candidate_time_window:
+      camB: [30, 450]
+      camD: [90, 720]
+
+    entry_rules:
+      camB: { xmin: 1300, xmax: 1920, ymin: 700, ymax: 1080, ang_min: 170, ang_max: 250 }
+      camD: { xmin: 1300, xmax: 1920, ymin: 330, ymax:  699, ang_min: 116, ang_max: 243 }
+
+    exit_rules:
+      camB: { xmin: 1300, xmax: 1920, ymin: 700, ymax: 1080, ang_min:   0, ang_max:  80 }
+      camD: { xmin: 1300, xmax: 1920, ymin: 330, ymax:  699, ang_min: 296, ang_max:  30 }
