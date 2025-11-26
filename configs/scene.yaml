@@ -87,7 +87,7 @@ cameras:
       drop_zone_3: [0, 630, 0, 125]
 
     neighbors: [camA, camC, camD, camE]
-    distance_to: { camA: 6.3, camC: 4.0, camD: 19.0, camE: 3.0 }
+    distance_to: { camA: 6.3, camC: 10.0, camD: 19.0, camE: 3.0 }
     candidate_time_window:
       camA: [30, 450]
       camC: [60, 650]
@@ -129,7 +129,7 @@ cameras:
       x_axis_defined_deg: 163
 
     neighbors: [camB]
-    distance_to: { camB: 15.0 }
+    distance_to: { camB: 10.0 }
     candidate_time_window:
       camB: [60, 650]
 
