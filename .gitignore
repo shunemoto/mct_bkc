@@ -22,6 +22,6 @@ out/
 # ==== VSCode 設定（共有したくなったらここは調整） ====
 .vscode/
 
-# ==== OS ゴミ ====
+# ==== OS ゴミを整理 ====
 .DS_Store
 Thumbs.db
