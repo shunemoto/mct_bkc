@@ -12,7 +12,6 @@ from src.models import SceneConfig, TrackSummary
 from src.summarize import build_summaries_after_roi_filter
 from src.matching import (CandidateList, MatchScore, build_all_candidates, compute_all_match_scores)
 
-
 def _read_data_paths_from_yaml(yaml_path: str) -> Dict[str, str]:
     """
     scene.yaml の data_paths セクションだけ取得する。
