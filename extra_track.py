@@ -20,6 +20,7 @@ def extract_track(json_path: str, track_id: int) -> str:
     str
         出力した JSON ファイルのパス
     """
+    
     # JSON ファイルを読み込み
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
