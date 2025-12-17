@@ -1,6 +1,6 @@
 # MCT-BKC: マルチカメラトラッキングによるリアルタイム人物再同定
 
-![最終的なマッチング結果](https://youtu.be/8wnPEaQ4-pg)
+[![ID統合](./images/トリシア.png)](https://github.com/shunemoto/mct_bkc/blob/main/movie/mct.mp4)
 
 ## 1. はじめに
 
