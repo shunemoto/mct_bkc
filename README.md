@@ -1,6 +1,6 @@
 # MCT-BKC: マルチカメラトラッキングによるリアルタイム人物再同定
 
-![最終的なマッチング結果](https://github.com/shunemoto/mct_bkc/images/final_matching_result.png)
+![最終的なマッチング結果](https://youtu.be/8wnPEaQ4-pg)
 
 ## 1. はじめに
 
